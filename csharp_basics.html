@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C# Basics Crash Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.6;
+            color: #e8e6e3;
+            background: #1e1e1e;
+            padding: 20px;
+        }
+
+        nav {
+            background: #252526;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        nav a {
+            color: #4ec9b0;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #569cd6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #252526;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: #4ec9b0;
+            border-bottom: 3px solid #569cd6;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #569cd6;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-left: 4px solid #4ec9b0;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #dcdcaa;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            border: 1px solid #3e3e42;
+        }
+
+        code {
+            color: #9cdcfe;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .note {
+            background: #264f78;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #569cd6;
+        }
+
+        .tip {
+            background: #2d4a2e;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #4ec9b0;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .comp-box {
+            background: #2d2d30;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #3e3e42;
+        }
+
+        .comp-box h4 {
+            color: #ce9178;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #3e3e42;
+        }
+
+        th {
+            background: #2d2d30;
+            color: #4ec9b0;
+        }
+
+        td {
+            background: #1e1e1e;
+        }
+
+        .highlight {
+            color: #4ec9b0;
+            font-weight: bold;
+        }
+
+        ul {
+            margin-left: 20px;
+            color: #d4d4d4;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">🏠 Home</a>
+        <a href="interview_crash_course.html">Interview Prep</a>
+        <a href="javascript_basics.html">JavaScript</a>
+        <a href="java_basics.html">Java</a>
+    </nav>
+
+    <div class="container">
+        <h1>🔷 C# Basics Crash Course</h1>
+
+        <div class="note">
+            <strong>Why C# for this role:</strong> C# is the primary language for Windows desktop GUI development with .NET framework. Coming from Python, you'll find many familiar OOP concepts with added type safety.
+        </div>
+
+        <h2>1. Basic Syntax & Structure</h2>
+
+        <h3>Hello World</h3>
+        <pre><code>using System;  // Import namespace
+
+namespace MyApp
+{
+    class Program
+    {
+        static void Main(string[] args)  // Entry point
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}</code></pre>
+
+        <div class="tip">
+            <strong>Python Comparison:</strong> Unlike Python's simple <code>print("Hello")</code>, C# requires a Main method inside a class. Think of it as more structured/verbose.
+        </div>
+
+        <h2>2. Variables & Data Types</h2>
+
+        <h3>Type Declaration</h3>
+        <pre><code>// Explicit typing (C# is statically typed)
+int age = 25;
+double price = 19.99;
+string name = "Jeter";
+bool isActive = true;
+char grade = 'A';
+
+// Type inference with 'var' (still statically typed at compile time)
+var count = 10;        // Compiler infers int
+var message = "Hi";    // Compiler infers string
+
+// Constants
+const double PI = 3.14159;</code></pre>
+
+        <table>
+            <tr>
+                <th>C# Type</th>
+                <th>Python Equivalent</th>
+                <th>Size</th>
+                <th>Range</th>
+            </tr>
+            <tr>
+                <td>int</td>
+                <td>int</td>
+                <td>4 bytes</td>
+                <td>-2.1B to 2.1B</td>
+            </tr>
+            <tr>
+                <td>long</td>
+                <td>int (large)</td>
+                <td>8 bytes</td>
+                <td>-9.2 quintillion to 9.2 quintillion</td>
+            </tr>
+            <tr>
+                <td>double</td>
+                <td>float</td>
+                <td>8 bytes</td>
+                <td>15-16 digits precision</td>
+            </tr>
+            <tr>
+                <td>decimal</td>
+                <td>Decimal</td>
+                <td>16 bytes</td>
+                <td>28-29 digits (for money)</td>
+            </tr>
+            <tr>
+                <td>string</td>
+                <td>str</td>
+                <td>Variable</td>
+                <td>Immutable sequence of chars</td>
+            </tr>
+            <tr>
+                <td>bool</td>
+                <td>bool</td>
+                <td>1 byte</td>
+                <td>true/false (lowercase!)</td>
+            </tr>
+        </table>
+
+        <h3>String Operations</h3>
+        <pre><code>// String concatenation
+string firstName = "Jeter";
+string lastName = "Gutierrez";
+string fullName = firstName + " " + lastName;
+
+// String interpolation (like Python f-strings)
+string greeting = $"Hello, {firstName}!";
+int age = 25;
+string info = $"{firstName} is {age} years old";
+
+// Multi-line strings
+string multiLine = @"Line 1
+Line 2
+Line 3";
+
+// Common methods
+string text = "Hello World";
+int length = text.Length;              // Property, not method!
+string upper = text.ToUpper();
+string lower = text.ToLower();
+bool contains = text.Contains("World");
+string replaced = text.Replace("World", "C#");
+string[] words = text.Split(' ');</code></pre>
+
+        <h2>3. Operators</h2>
+
+        <pre><code>// Arithmetic
+int sum = 10 + 5;
+int diff = 10 - 5;
+int product = 10 * 5;
+int quotient = 10 / 5;
+int remainder = 10 % 3;
+
+// Comparison (return bool)
+bool isEqual = (5 == 5);        // true
+bool notEqual = (5 != 3);        // true
+bool greater = (10 > 5);         // true
+bool lessEqual = (5 <= 10);      // true
+
+// Logical
+bool and = (true && false);      // false (like Python 'and')
+bool or = (true || false);       // true (like Python 'or')
+bool not = !true;                // false (like Python 'not')
+
+// Increment/Decrement
+int x = 5;
+x++;     // x = 6 (post-increment)
+++x;     // x = 7 (pre-increment)
+x--;     // x = 6 (post-decrement)
+--x;     // x = 5 (pre-decrement)</code></pre>
+
+        <h2>4. Control Flow</h2>
+
+        <h3>If-Else Statements</h3>
+        <pre><code>int score = 85;
+
+if (score >= 90)
+{
+    Console.WriteLine("Grade: A");
+}
+else if (score >= 80)
+{
+    Console.WriteLine("Grade: B");
+}
+else if (score >= 70)
+{
+    Console.WriteLine("Grade: C");
+}
+else
+{
+    Console.WriteLine("Grade: F");
+}
+
+// Ternary operator
+string result = (score >= 60) ? "Pass" : "Fail";</code></pre>
+
+        <h3>Switch Statements</h3>
+        <pre><code>string day = "Monday";
+
+switch (day)
+{
+    case "Monday":
+        Console.WriteLine("Start of week");
+        break;  // REQUIRED (unlike Python)
+    case "Friday":
+        Console.WriteLine("Almost weekend");
+        break;
+    case "Saturday":
+    case "Sunday":
+        Console.WriteLine("Weekend!");
+        break;
+    default:
+        Console.WriteLine("Midweek");
+        break;
+}
+
+// Modern switch expression (C# 8.0+)
+string message = day switch
+{
+    "Monday" => "Start of week",
+    "Friday" => "Almost weekend",
+    "Saturday" or "Sunday" => "Weekend!",
+    _ => "Midweek"  // Default case
+};</code></pre>
+
+        <h2>5. Loops</h2>
+
+        <h3>For Loop</h3>
+        <pre><code>// Standard for loop
+for (int i = 0; i < 5; i++)
+{
+    Console.WriteLine($"Count: {i}");
+}
+
+// Loop through array
+int[] numbers = { 1, 2, 3, 4, 5 };
+for (int i = 0; i < numbers.Length; i++)
+{
+    Console.WriteLine(numbers[i]);
+}</code></pre>
+
+        <h3>While Loop</h3>
+        <pre><code>int count = 0;
+while (count < 5)
+{
+    Console.WriteLine($"Count: {count}");
+    count++;
+}
+
+// Do-while (executes at least once)
+int num = 0;
+do
+{
+    Console.WriteLine($"Number: {num}");
+    num++;
+} while (num < 5);</code></pre>
+
+        <h3>Foreach Loop</h3>
+        <pre><code>// Like Python's 'for item in collection'
+string[] fruits = { "Apple", "Banana", "Orange" };
+
+foreach (string fruit in fruits)
+{
+    Console.WriteLine(fruit);
+}
+
+// With List
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+foreach (int num in numbers)
+{
+    Console.WriteLine(num);
+}</code></pre>
+
+        <h3>Loop Control</h3>
+        <pre><code>// Break - exit loop
+for (int i = 0; i < 10; i++)
+{
+    if (i == 5) break;  // Stop at 5
+    Console.WriteLine(i);
+}
+
+// Continue - skip to next iteration
+for (int i = 0; i < 10; i++)
+{
+    if (i % 2 == 0) continue;  // Skip even numbers
+    Console.WriteLine(i);
+}</code></pre>
+
+        <h2>6. Collections (Data Structures)</h2>
+
+        <h3>Arrays (Fixed Size)</h3>
+        <pre><code>// Declaration and initialization
+int[] numbers = new int[5];           // Array of 5 integers
+int[] scores = { 90, 85, 78, 92, 88 }; // Initialize with values
+
+// Access elements
+int first = scores[0];   // 90
+scores[2] = 95;          // Modify
+
+// Properties
+int length = scores.Length;  // 5
+
+// Multi-dimensional array
+int[,] matrix = new int[3, 3];
+matrix[0, 0] = 1;
+
+// Jagged array (array of arrays)
+int[][] jagged = new int[3][];
+jagged[0] = new int[] { 1, 2 };
+jagged[1] = new int[] { 3, 4, 5 };</code></pre>
+
+        <h3>List (Dynamic Array - like Python list)</h3>
+        <pre><code>using System.Collections.Generic;
+
+// Create List
+List<int> numbers = new List<int>();
+
+// Add elements
+numbers.Add(10);
+numbers.Add(20);
+numbers.Add(30);
+
+// Initialize with values
+List<string> names = new List<string> { "Alice", "Bob", "Charlie" };
+
+// Access
+string first = names[0];
+
+// Common operations
+names.Insert(1, "Dave");         // Insert at index
+names.Remove("Bob");             // Remove by value
+names.RemoveAt(0);               // Remove by index
+bool contains = names.Contains("Alice");
+int count = names.Count;         // NOT .Length!
+names.Clear();                   // Remove all
+
+// Iterate
+foreach (string name in names)
+{
+    Console.WriteLine(name);
+}</code></pre>
+
+        <h3>Dictionary (Hash Map - like Python dict)</h3>
+        <pre><code>// Create Dictionary
+Dictionary<string, int> ages = new Dictionary<string, int>();
+
+// Add items
+ages["Alice"] = 25;
+ages["Bob"] = 30;
+ages.Add("Charlie", 35);
+
+// Initialize with values
+var scores = new Dictionary<string, int>
+{
+    { "Math", 90 },
+    { "Science", 85 },
+    { "English", 92 }
+};
+
+// Access
+int aliceAge = ages["Alice"];
+
+// Check if key exists (important!)
+if (ages.ContainsKey("Alice"))
+{
+    int age = ages["Alice"];
+}
+
+// TryGetValue (safer way)
+if (ages.TryGetValue("Alice", out int value))
+{
+    Console.WriteLine($"Alice is {value} years old");
+}
+
+// Iterate
+foreach (KeyValuePair<string, int> kvp in ages)
+{
+    Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+}
+
+// Or use var
+foreach (var kvp in ages)
+{
+    Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+}</code></pre>
+
+        <h3>HashSet (like Python set)</h3>
+        <pre><code>HashSet<int> uniqueNumbers = new HashSet<int>();
+
+uniqueNumbers.Add(1);
+uniqueNumbers.Add(2);
+uniqueNumbers.Add(2);  // Won't add duplicate
+
+bool contains = uniqueNumbers.Contains(1);
+uniqueNumbers.Remove(2);</code></pre>
+
+        <h2>7. Methods (Functions)</h2>
+
+        <h3>Basic Methods</h3>
+        <pre><code>// Method with return value
+int Add(int a, int b)
+{
+    return a + b;
+}
+
+// Method with no return (void - like Python None)
+void PrintMessage(string message)
+{
+    Console.WriteLine(message);
+}
+
+// Method with default parameters
+void Greet(string name, string greeting = "Hello")
+{
+    Console.WriteLine($"{greeting}, {name}!");
+}
+
+// Usage
+int sum = Add(5, 3);
+PrintMessage("Hello");
+Greet("Jeter");              // Uses default greeting
+Greet("Jeter", "Hi");        // Custom greeting</code></pre>
+
+        <h3>Method Overloading</h3>
+        <pre><code>// Same name, different parameters
+int Add(int a, int b)
+{
+    return a + b;
+}
+
+double Add(double a, double b)
+{
+    return a + b;
+}
+
+int Add(int a, int b, int c)
+{
+    return a + b + c;
+}
+
+// Usage
+int sum1 = Add(5, 3);           // Calls int version
+double sum2 = Add(5.5, 3.2);    // Calls double version
+int sum3 = Add(1, 2, 3);        // Calls three-parameter version</code></pre>
+
+        <h3>Out and Ref Parameters</h3>
+        <pre><code>// Out - method must assign value
+bool TryParse(string input, out int result)
+{
+    return int.TryParse(input, out result);
+}
+
+// Usage
+if (TryParse("123", out int number))
+{
+    Console.WriteLine($"Parsed: {number}");
+}
+
+// Ref - pass by reference (must be initialized)
+void Increment(ref int value)
+{
+    value++;
+}
+
+int x = 5;
+Increment(ref x);  // x is now 6</code></pre>
+
+        <h2>8. Classes & Objects</h2>
+
+        <h3>Basic Class</h3>
+        <pre><code>public class Person
+{
+    // Fields (private by default)
+    private string name;
+    private int age;
+    
+    // Properties (C# way of getters/setters)
+    public string Name { get; set; }
+    public int Age { get; set; }
+    
+    // Constructor
+    public Person(string name, int age)
+    {
+        this.name = name;
+        this.age = age;
+    }
+    
+    // Method
+    public void Introduce()
+    {
+        Console.WriteLine($"Hi, I'm {name} and I'm {age} years old");
+    }
+}
+
+// Usage
+Person person = new Person("Jeter", 25);
+person.Introduce();
+
+// With properties
+Person p = new Person("Alice", 30);
+p.Name = "Alice Smith";  // Setter
+string name = p.Name;     // Getter</code></pre>
+
+        <h3>Auto-Properties (Shorthand)</h3>
+        <pre><code>public class Product
+{
+    // Auto-implemented properties
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public int Stock { get; set; }
+    
+    // Property with default value
+    public bool IsAvailable { get; set; } = true;
+    
+    // Read-only property (can only be set in constructor)
+    public string Id { get; }
+    
+    public Product(string name, decimal price)
+    {
+        Id = Guid.NewGuid().ToString();
+        Name = name;
+        Price = price;
+    }
+}</code></pre>
+
+        <h3>Inheritance</h3>
+        <pre><code>// Base class
+public class Animal
+{
+    public string Name { get; set; }
+    
+    public virtual void MakeSound()  // virtual = can be overridden
+    {
+        Console.WriteLine("Some sound");
+    }
+}
+
+// Derived class
+public class Dog : Animal  // Inherits from Animal
+{
+    public override void MakeSound()  // Override base method
+    {
+        Console.WriteLine("Woof!");
+    }
+    
+    public void Fetch()
+    {
+        Console.WriteLine($"{Name} is fetching");
+    }
+}
+
+// Usage
+Dog dog = new Dog { Name = "Max" };
+dog.MakeSound();  // Woof!
+dog.Fetch();      // Max is fetching</code></pre>
+
+        <h3>Interfaces</h3>
+        <pre><code>// Interface defines contract
+public interface IDrawable
+{
+    void Draw();
+    void Resize(int width, int height);
+}
+
+// Class implements interface
+public class Circle : IDrawable
+{
+    public int Radius { get; set; }
+    
+    public void Draw()
+    {
+        Console.WriteLine("Drawing circle");
+    }
+    
+    public void Resize(int width, int height)
+    {
+        Radius = width / 2;
+    }
+}
+
+// Usage
+IDrawable shape = new Circle();
+shape.Draw();</code></pre>
+
+        <h2>9. Exception Handling</h2>
+
+        <pre><code>try
+{
+    int result = 10 / 0;  // Division by zero
+}
+catch (DivideByZeroException ex)
+{
+    Console.WriteLine($"Error: {ex.Message}");
+}
+catch (Exception ex)  // Catch all other exceptions
+{
+    Console.WriteLine($"General error: {ex.Message}");
+}
+finally
+{
+    // Always executes (cleanup code)
+    Console.WriteLine("Cleanup");
+}
+
+// Throwing exceptions
+void ValidateAge(int age)
+{
+    if (age < 0)
+    {
+        throw new ArgumentException("Age cannot be negative");
+    }
+}</code></pre>
+
+        <h2>10. LINQ (Language Integrated Query)</h2>
+
+        <div class="note">
+            <strong>Think of LINQ as:</strong> Similar to Python's list comprehensions and filter/map/reduce, but more powerful and integrated into the language.
+        </div>
+
+        <pre><code>using System.Linq;
+
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+// Where (filter) - like Python filter()
+var evenNumbers = numbers.Where(n => n % 2 == 0);
+
+// Select (map) - like Python map()
+var doubled = numbers.Select(n => n * 2);
+
+// Any - check if any element matches
+bool hasEven = numbers.Any(n => n % 2 == 0);  // true
+
+// All - check if all elements match
+bool allPositive = numbers.All(n => n > 0);    // true
+
+// First/FirstOrDefault
+int first = numbers.First();              // Throws if empty
+int firstOrDefault = numbers.FirstOrDefault();  // Returns 0 if empty
+
+// OrderBy/OrderByDescending
+var sorted = numbers.OrderBy(n => n);
+var sortedDesc = numbers.OrderByDescending(n => n);
+
+// Sum, Average, Min, Max
+int sum = numbers.Sum();
+double avg = numbers.Average();
+int min = numbers.Min();
+int max = numbers.Max();
+
+// Complex example
+var result = numbers
+    .Where(n => n > 5)
+    .OrderBy(n => n)
+    .Select(n => n * 2)
+    .ToList();</code></pre>
+
+        <h2>11. Async/Await (For GUI Non-Blocking Operations)</h2>
+
+        <pre><code>using System.Threading.Tasks;
+
+// Async method
+async Task<string> FetchDataAsync(string url)
+{
+    // Simulate API call
+    await Task.Delay(2000);  // Wait 2 seconds without blocking
+    return "Data from " + url;
+}
+
+// Usage in GUI context
+async void Button_Click(object sender, EventArgs e)
+{
+    // Show loading
+    statusLabel.Text = "Loading...";
+    
+    // Fetch data without freezing GUI
+    string data = await FetchDataAsync("https://api.example.com");
+    
+    // Update UI with result
+    resultLabel.Text = data;
+    statusLabel.Text = "Ready";
+}
+
+// Multiple async operations
+async Task ProcessMultipleAsync()
+{
+    Task<string> task1 = FetchDataAsync("url1");
+    Task<string> task2 = FetchDataAsync("url2");
+    
+    // Wait for both to complete
+    await Task.WhenAll(task1, task2);
+    
+    string result1 = task1.Result;
+    string result2 = task2.Result;
+}</code></pre>
+
+        <h2>12. Common Patterns for GUI Development</h2>
+
+        <h3>Event Handlers</h3>
+        <pre><code>// Button click event
+private void btnSubmit_Click(object sender, EventArgs e)
+{
+    string input = txtInput.Text;
+    MessageBox.Show($"You entered: {input}");
+}
+
+// Text changed event
+private void txtSearch_TextChanged(object sender, EventArgs e)
+{
+    string searchText = txtSearch.Text;
+    FilterResults(searchText);
+}</code></pre>
+
+        <div class="comparison">
+            <div class="comp-box">
+                <h4>🐍 Python</h4>
+                <pre><code># Dynamic typing
+x = 5
+x = "hello"  # OK
+
+# No semicolons
+print("Hello")
+
+# Indentation matters
+if x > 5:
+    print("Yes")
+
+# Simple imports
+import math</code></pre>
+            </div>
+            <div class="comp-box">
+                <h4>🔷 C#</h4>
+                <pre><code>// Static typing
+int x = 5;
+x = "hello";  // ERROR
+
+// Semicolons required
+Console.WriteLine("Hello");
+
+// Braces, indentation optional
+if (x > 5) {
+    Console.WriteLine("Yes");
+}
+
+// Namespaces
+using System;</code></pre>
+            </div>
+        </div>
+
+        <h2>13. Quick Reference Cheat Sheet</h2>
+
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Python</th>
+                <th>C#</th>
+            </tr>
+            <tr>
+                <td>Print</td>
+                <td>print("hello")</td>
+                <td>Console.WriteLine("hello");</td>
+            </tr>
+            <tr>
+                <td>List</td>
+                <td>arr = [1, 2, 3]</td>
+                <td>List&lt;int&gt; arr = new List&lt;int&gt; {1, 2, 3};</td>
+            </tr>
+            <tr>
+                <td>Dictionary</td>
+                <td>d = {"a": 1}</td>
+                <td>Dictionary&lt;string, int&gt; d = new() {{"a", 1}};</td>
+            </tr>
+            <tr>
+                <td>For loop</td>
+                <td>for i in range(5):</td>
+                <td>for (int i = 0; i < 5; i++)</td>
+            </tr>
+            <tr>
+                <td>Function</td>
+                <td>def func(x):</td>
+                <td>void Func(int x) {</td>
+            </tr>
+            <tr>
+                <td>String format</td>
+                <td>f"Hello {name}"</td>
+                <td>$"Hello {name}"</td>
+            </tr>
+            <tr>
+                <td>List comprehension</td>
+                <td>[x*2 for x in nums]</td>
+                <td>nums.Select(x => x*2)</td>
+            </tr>
+            <tr>
+                <td>Filter</td>
+                <td>filter(lambda x: x>5, nums)</td>
+                <td>nums.Where(x => x > 5)</td>
+            </tr>
+        </table>
+
+        <div class="tip">
+            <h3>💡 Study Tips</h3>
+            <ul>
+                <li>Focus on <strong>syntax differences</strong> from Python - you already know the concepts</li>
+                <li>Practice writing <strong>classes and interfaces</strong> - they're heavily used in C# GUI apps</li>
+                <li>Understand <strong>async/await</strong> - critical for non-blocking GUI operations</li>
+                <li>Get comfortable with <strong>LINQ</strong> - it's used everywhere in modern C#</li>
+                <li>Remember: <strong>semicolons, braces, and explicit types</strong></li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <h3>🎯 For Your Interview</h3>
+            <p>You don't need to be a C# expert. Show that you:</p>
+            <ul>
+                <li>✅ Understand the basic syntax and can read C# code</li>
+                <li>✅ Know OOP concepts (classes, inheritance, interfaces)</li>
+                <li>✅ Can explain async/await for GUI responsiveness</li>
+                <li>✅ Recognize the patterns (they're similar to Python)</li>
+                <li>✅ Are confident you can learn quickly (you've learned FastAPI, Flask, Django)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

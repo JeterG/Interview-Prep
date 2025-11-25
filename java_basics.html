@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Basics Crash Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.6;
+            color: #e8e6e3;
+            background: #1e1e1e;
+            padding: 20px;
+        }
+
+        nav {
+            background: #252526;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        nav a {
+            color: #4ec9b0;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #569cd6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #252526;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: #f89820;
+            border-bottom: 3px solid #5382a1;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #f89820;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-left: 4px solid #4ec9b0;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #dcdcaa;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            border: 1px solid #3e3e42;
+        }
+
+        code {
+            color: #9cdcfe;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .note {
+            background: #264f78;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #569cd6;
+        }
+
+        .tip {
+            background: #2d4a2e;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #4ec9b0;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .comp-box {
+            background: #2d2d30;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #3e3e42;
+        }
+
+        .comp-box h4 {
+            color: #ce9178;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #3e3e42;
+        }
+
+        th {
+            background: #2d2d30;
+            color: #f89820;
+        }
+
+        td {
+            background: #1e1e1e;
+        }
+
+        .highlight {
+            color: #f89820;
+            font-weight: bold;
+        }
+
+        ul {
+            margin-left: 20px;
+            color: #d4d4d4;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">🏠 Home</a>
+        <a href="interview_crash_course.html">Interview Prep</a>
+        <a href="csharp_basics.html">C# Basics</a>
+        <a href="javascript_basics.html">JavaScript</a>
+    </nav>
+
+    <div class="container">
+        <h1>☕ Java Basics Crash Course</h1>
+
+        <div class="note">
+            <strong>Why Java matters:</strong> Java provides a strong foundation in OOP concepts that transfer directly to C# and other languages. Understanding Java helps you grasp strongly-typed, class-based programming.
+        </div>
+
+        <h2>1. Basic Structure</h2>
+
+        <h3>Hello World</h3>
+        <pre><code>// Every Java program starts with a class
+public class HelloWorld {
+    // Main method - entry point of program
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+
+        <div class="tip">
+            <strong>Key Points:</strong>
+            <ul>
+                <li>Everything must be inside a class</li>
+                <li>Filename must match class name: <code>HelloWorld.java</code></li>
+                <li>Case sensitive: <code>public</code> not <code>Public</code></li>
+                <li>Semicolons required at end of statements</li>
+            </ul>
+        </div>
+
+        <h2>2. Variables & Data Types</h2>
+
+        <h3>Primitive Types</h3>
+        <pre><code>// Integer types
+byte smallNum = 127;           // 8-bit: -128 to 127
+short mediumNum = 32000;       // 16-bit: -32,768 to 32,767
+int regularNum = 2000000;      // 32-bit: -2.1B to 2.1B (most common)
+long bigNum = 9000000000L;     // 64-bit (note the L suffix)
+
+// Floating point
+float price = 19.99f;          // 32-bit (note the f suffix)
+double precise = 19.99;        // 64-bit (default for decimals)
+
+// Boolean
+boolean isActive = true;
+boolean isComplete = false;
+
+// Character
+char grade = 'A';
+char symbol = '$';
+
+// Note: Java is STRONGLY TYPED - you must declare types</code></pre>
+
+        <h3>Strings (Reference Type)</h3>
+        <pre><code>// String is a class, not a primitive
+String name = "Jeter";
+String greeting = "Hello, " + name;  // Concatenation
+
+// String methods
+int length = name.length();
+String upper = name.toUpperCase();
+String lower = name.toLowerCase();
+boolean contains = name.contains("et");
+char firstChar = name.charAt(0);
+String replaced = name.replace("Jeter", "John");
+
+// String comparison (IMPORTANT!)
+String a = "hello";
+String b = "hello";
+boolean equal1 = (a == b);          // DON'T use == for strings!
+boolean equal2 = a.equals(b);       // USE .equals() instead
+boolean equalIgnoreCase = a.equalsIgnoreCase("HELLO");
+
+// String formatting
+String formatted = String.format("Name: %s, Age: %d", name, 25);</code></pre>
+
+        <h3>Type Casting</h3>
+        <pre><code>// Widening (automatic)
+int myInt = 9;
+double myDouble = myInt;  // OK: int to double
+
+// Narrowing (manual)
+double price = 19.99;
+int rounded = (int) price;  // 19 (decimal part lost)
+
+// String to number
+String numStr = "123";
+int num = Integer.parseInt(numStr);
+double decimal = Double.parseDouble("3.14");</code></pre>
+
+        <h2>3. Operators</h2>
+
+        <pre><code>// Arithmetic
+int sum = 10 + 5;
+int diff = 10 - 5;
+int product = 10 * 5;
+int quotient = 10 / 5;
+int remainder = 10 % 3;
+
+// Increment/Decrement
+int x = 5;
+x++;  // x = 6
+++x;  // x = 7
+x--;  // x = 6
+
+// Comparison
+boolean equal = (5 == 5);
+boolean notEqual = (5 != 3);
+boolean greater = (10 > 5);
+boolean lessEqual = (5 <= 10);
+
+// Logical
+boolean and = (true && false);   // false
+boolean or = (true || false);    // true
+boolean not = !true;             // false
+
+// Assignment
+int a = 10;
+a += 5;  // a = a + 5
+a -= 3;  // a = a - 3
+a *= 2;  // a = a * 2
+a /= 2;  // a = a / 2</code></pre>
+
+        <h2>4. Control Flow</h2>
+
+        <h3>If-Else</h3>
+        <pre><code>int score = 85;
+
+if (score >= 90) {
+    System.out.println("Grade: A");
+} else if (score >= 80) {
+    System.out.println("Grade: B");
+} else if (score >= 70) {
+    System.out.println("Grade: C");
+} else {
+    System.out.println("Grade: F");
+}
+
+// Ternary operator
+String result = (score >= 60) ? "Pass" : "Fail";</code></pre>
+
+        <h3>Switch Statement</h3>
+        <pre><code>String day = "Monday";
+
+switch (day) {
+    case "Monday":
+        System.out.println("Start of week");
+        break;  // REQUIRED to prevent fall-through
+    case "Friday":
+        System.out.println("Almost weekend");
+        break;
+    case "Saturday":
+    case "Sunday":
+        System.out.println("Weekend!");
+        break;
+    default:
+        System.out.println("Midweek");
+        break;
+}
+
+// Java 14+ enhanced switch (if available)
+String message = switch (day) {
+    case "Monday" -> "Start of week";
+    case "Friday" -> "Almost weekend";
+    case "Saturday", "Sunday" -> "Weekend!";
+    default -> "Midweek";
+};</code></pre>
+
+        <h2>5. Loops</h2>
+
+        <h3>For Loop</h3>
+        <pre><code>// Traditional for loop
+for (int i = 0; i < 5; i++) {
+    System.out.println("Count: " + i);
+}
+
+// Loop through array
+int[] numbers = {1, 2, 3, 4, 5};
+for (int i = 0; i < numbers.length; i++) {
+    System.out.println(numbers[i]);
+}</code></pre>
+
+        <h3>Enhanced For Loop (For-Each)</h3>
+        <pre><code>int[] numbers = {1, 2, 3, 4, 5};
+
+// For-each loop (like Python for item in list)
+for (int num : numbers) {
+    System.out.println(num);
+}
+
+String[] fruits = {"Apple", "Banana", "Orange"};
+for (String fruit : fruits) {
+    System.out.println(fruit);
+}</code></pre>
+
+        <h3>While and Do-While</h3>
+        <pre><code>// While loop
+int count = 0;
+while (count < 5) {
+    System.out.println(count);
+    count++;
+}
+
+// Do-while (executes at least once)
+int num = 0;
+do {
+    System.out.println(num);
+    num++;
+} while (num < 5);</code></pre>
+
+        <h3>Loop Control</h3>
+        <pre><code>// Break - exit loop
+for (int i = 0; i < 10; i++) {
+    if (i == 5) break;
+    System.out.println(i);
+}
+
+// Continue - skip to next iteration
+for (int i = 0; i < 10; i++) {
+    if (i % 2 == 0) continue;  // Skip even numbers
+    System.out.println(i);
+}</code></pre>
+
+        <h2>6. Arrays</h2>
+
+        <h3>Array Declaration and Usage</h3>
+        <pre><code>// Declaration
+int[] numbers = new int[5];  // Array of 5 integers (initialized to 0)
+
+// Initialize with values
+int[] scores = {90, 85, 78, 92, 88};
+
+// Access elements
+int first = scores[0];  // 90
+scores[2] = 95;         // Modify element
+
+// Array length
+int length = scores.length;  // 5 (property, not method!)
+
+// Loop through array
+for (int i = 0; i < scores.length; i++) {
+    System.out.println(scores[i]);
+}
+
+// Multi-dimensional arrays
+int[][] matrix = new int[3][3];
+matrix[0][0] = 1;
+matrix[0][1] = 2;
+
+// Initialize 2D array
+int[][] grid = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};</code></pre>
+
+        <h2>7. ArrayList (Dynamic Array)</h2>
+
+        <pre><code>import java.util.ArrayList;
+
+// Create ArrayList (like Python list)
+ArrayList<Integer> numbers = new ArrayList<>();
+
+// Add elements
+numbers.add(10);
+numbers.add(20);
+numbers.add(30);
+
+// Initialize with values
+ArrayList<String> names = new ArrayList<>();
+names.add("Alice");
+names.add("Bob");
+names.add("Charlie");
+
+// Access elements
+String first = names.get(0);  // Use .get(), not []
+
+// Modify element
+names.set(0, "Alex");
+
+// Remove elements
+names.remove(0);           // Remove by index
+names.remove("Bob");       // Remove by value
+
+// Common operations
+int size = names.size();            // NOT .length()
+boolean contains = names.contains("Alice");
+boolean isEmpty = names.isEmpty();
+names.clear();                      // Remove all elements
+
+// Loop through ArrayList
+for (String name : names) {
+    System.out.println(name);
+}
+
+// Or with traditional for loop
+for (int i = 0; i < names.size(); i++) {
+    System.out.println(names.get(i));
+}</code></pre>
+
+        <h2>8. HashMap (Dictionary)</h2>
+
+        <pre><code>import java.util.HashMap;
+
+// Create HashMap (like Python dict)
+HashMap<String, Integer> ages = new HashMap<>();
+
+// Add key-value pairs
+ages.put("Alice", 25);
+ages.put("Bob", 30);
+ages.put("Charlie", 35);
+
+// Access values
+int aliceAge = ages.get("Alice");  // 25
+
+// Check if key exists
+if (ages.containsKey("Alice")) {
+    System.out.println("Alice's age: " + ages.get("Alice"));
+}
+
+// Check if value exists
+boolean hasThirty = ages.containsValue(30);
+
+// Remove entry
+ages.remove("Bob");
+
+// Get size
+int size = ages.size();
+
+// Loop through HashMap
+for (String key : ages.keySet()) {
+    System.out.println(key + ": " + ages.get(key));
+}
+
+// Or use entrySet
+for (HashMap.Entry<String, Integer> entry : ages.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
+}</code></pre>
+
+        <h2>9. Methods (Functions)</h2>
+
+        <h3>Basic Methods</h3>
+        <pre><code>public class Calculator {
+    // Method with return value
+    public int add(int a, int b) {
+        return a + b;
+    }
+    
+    // Method with no return (void)
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+    
+    // Static method (can be called without creating object)
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+    
+    public static void main(String[] args) {
+        // Creating object to call non-static method
+        Calculator calc = new Calculator();
+        int sum = calc.add(5, 3);
+        calc.printMessage("Hello");
+        
+        // Call static method directly
+        int product = Calculator.multiply(4, 5);
+        // Or just:
+        int result = multiply(4, 5);
+    }
+}</code></pre>
+
+        <h3>Method Overloading</h3>
+        <pre><code>public class Math {
+    // Same name, different parameters
+    public int add(int a, int b) {
+        return a + b;
+    }
+    
+    public double add(double a, double b) {
+        return a + b;
+    }
+    
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}</code></pre>
+
+        <h2>10. Classes and Objects</h2>
+
+        <h3>Basic Class</h3>
+        <pre><code>public class Person {
+    // Fields (instance variables)
+    private String name;
+    private int age;
+    
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    // Getters
+    public String getName() {
+        return name;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    // Method
+    public void introduce() {
+        System.out.println("Hi, I'm " + name + " and I'm " + age + " years old");
+    }
+}
+
+// Usage
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Jeter", 25);
+        person.introduce();
+        
+        // Use getters and setters
+        String name = person.getName();
+        person.setAge(26);
+    }
+}</code></pre>
+
+        <h3>Inheritance</h3>
+        <pre><code>// Base class (parent)
+public class Animal {
+    protected String name;  // protected = accessible by subclasses
+    
+    public Animal(String name) {
+        this.name = name;
+    }
+    
+    public void makeSound() {
+        System.out.println("Some sound");
+    }
+}
+
+// Derived class (child)
+public class Dog extends Animal {
+    public Dog(String name) {
+        super(name);  // Call parent constructor
+    }
+    
+    @Override  // Annotation indicates overriding parent method
+    public void makeSound() {
+        System.out.println("Woof!");
+    }
+    
+    public void fetch() {
+        System.out.println(name + " is fetching");
+    }
+}
+
+// Usage
+Dog dog = new Dog("Max");
+dog.makeSound();  // Woof!
+dog.fetch();      // Max is fetching</code></pre>
+
+        <h3>Interfaces</h3>
+        <pre><code>// Interface defines contract (like a protocol)
+public interface Drawable {
+    void draw();  // abstract method (no implementation)
+    void resize(int width, int height);
+}
+
+// Class implements interface
+public class Circle implements Drawable {
+    private int radius;
+    
+    @Override
+    public void draw() {
+        System.out.println("Drawing circle");
+    }
+    
+    @Override
+    public void resize(int width, int height) {
+        this.radius = width / 2;
+    }
+}
+
+// A class can implement multiple interfaces
+public class Square implements Drawable, Comparable<Square> {
+    // Implementation...
+}</code></pre>
+
+        <h3>Abstract Classes</h3>
+        <pre><code>// Abstract class (cannot be instantiated directly)
+public abstract class Shape {
+    protected String color;
+    
+    public Shape(String color) {
+        this.color = color;
+    }
+    
+    // Abstract method (must be implemented by subclass)
+    public abstract double calculateArea();
+    
+    // Concrete method (has implementation)
+    public void displayColor() {
+        System.out.println("Color: " + color);
+    }
+}
+
+public class Rectangle extends Shape {
+    private double width;
+    private double height;
+    
+    public Rectangle(String color, double width, double height) {
+        super(color);
+        this.width = width;
+        this.height = height;
+    }
+    
+    @Override
+    public double calculateArea() {
+        return width * height;
+    }
+}</code></pre>
+
+        <h2>11. Exception Handling</h2>
+
+        <pre><code>public class ExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;  // Division by zero
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("General error: " + e.getMessage());
+        } finally {
+            // Always executes (cleanup code)
+            System.out.println("Cleanup");
+        }
+    }
+    
+    // Throwing exceptions
+    public static void validateAge(int age) throws IllegalArgumentException {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative");
+        }
+    }
+}</code></pre>
+
+        <h2>12. Input/Output</h2>
+
+        <h3>Console Output</h3>
+        <pre><code>// Print with newline
+System.out.println("Hello World");
+
+// Print without newline
+System.out.print("Hello ");
+System.out.print("World");
+
+// Formatted output
+System.out.printf("Name: %s, Age: %d, GPA: %.2f%n", "Jeter", 25, 3.75);</code></pre>
+
+        <h3>Console Input</h3>
+        <pre><code>import java.util.Scanner;
+
+public class InputExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read string
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        
+        // Read integer
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();
+        
+        // Read double
+        System.out.print("Enter price: ");
+        double price = scanner.nextDouble();
+        
+        scanner.close();  // Always close Scanner
+    }
+}</code></pre>
+
+        <h2>13. Common Java Patterns</h2>
+
+        <h3>Getters and Setters (Encapsulation)</h3>
+        <pre><code>public class Product {
+    private String name;
+    private double price;
+    
+    // Constructor
+    public Product(String name, double price) {
+        this.name = name;
+        setPrice(price);  // Use setter for validation
+    }
+    
+    // Getter
+    public String getName() {
+        return name;
+    }
+    
+    // Setter with validation
+    public void setPrice(double price) {
+        if (price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative");
+        }
+        this.price = price;
+    }
+    
+    public double getPrice() {
+        return price;
+    }
+}</code></pre>
+
+        <h3>toString() Method</h3>
+        <pre><code>public class Person {
+    private String name;
+    private int age;
+    
+    // Override toString for readable output
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + "}";
+    }
+}
+
+// Usage
+Person p = new Person("Jeter", 25);
+System.out.println(p);  // Calls toString() automatically</code></pre>
+
+        <div class="comparison">
+            <div class="comp-box">
+                <h4>🐍 Python</h4>
+                <pre><code># Dynamic typing
+x = 5
+x = "hello"  # OK
+
+# No type declarations
+def add(a, b):
+    return a + b
+
+# List
+arr = [1, 2, 3]
+arr.append(4)
+
+# Dict
+d = {"a": 1}
+d["b"] = 2</code></pre>
+            </div>
+            <div class="comp-box">
+                <h4>☕ Java</h4>
+                <pre><code>// Static typing
+int x = 5;
+x = "hello";  // ERROR
+
+// Explicit types
+public int add(int a, int b) {
+    return a + b;
+}
+
+// ArrayList
+ArrayList<Integer> arr = new ArrayList<>();
+arr.add(1); arr.add(2); arr.add(3);
+arr.add(4);
+
+// HashMap
+HashMap<String, Integer> d = new HashMap<>();
+d.put("a", 1);
+d.put("b", 2);</code></pre>
+            </div>
+        </div>
+
+        <h2>14. Quick Reference</h2>
+
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Python</th>
+                <th>Java</th>
+            </tr>
+            <tr>
+                <td>Print</td>
+                <td>print("hello")</td>
+                <td>System.out.println("hello");</td>
+            </tr>
+            <tr>
+                <td>Variables</td>
+                <td>x = 5</td>
+                <td>int x = 5;</td>
+            </tr>
+            <tr>
+                <td>List/ArrayList</td>
+                <td>arr = [1, 2, 3]</td>
+                <td>ArrayList&lt;Integer&gt; arr = new ArrayList&lt;&gt;();</td>
+            </tr>
+            <tr>
+                <td>Dict/HashMap</td>
+                <td>d = {"a": 1}</td>
+                <td>HashMap&lt;String, Integer&gt; d = new HashMap&lt;&gt;();</td>
+            </tr>
+            <tr>
+                <td>Function/Method</td>
+                <td>def func(x):</td>
+                <td>public int func(int x) {</td>
+            </tr>
+            <tr>
+                <td>For loop</td>
+                <td>for i in range(5):</td>
+                <td>for (int i = 0; i < 5; i++)</td>
+            </tr>
+            <tr>
+                <td>Class</td>
+                <td>class Person:</td>
+                <td>public class Person {</td>
+            </tr>
+            <tr>
+                <td>Constructor</td>
+                <td>def __init__(self):</td>
+                <td>public Person() {</td>
+            </tr>
+        </table>
+
+        <div class="tip">
+            <h3>💡 Study Tips</h3>
+            <ul>
+                <li>Java is <strong>verbose but explicit</strong> - everything is clearly typed</li>
+                <li>Focus on <strong>OOP concepts</strong> - classes, inheritance, interfaces</li>
+                <li>Understand <strong>access modifiers</strong> (public, private, protected)</li>
+                <li>Learn the <strong>collections framework</strong> (ArrayList, HashMap)</li>
+                <li>Practice <strong>exception handling</strong> - it's mandatory in Java</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <h3>🎯 Java vs C# - Key Similarities</h3>
+            <p>Java and C# are extremely similar. If you know Java, C# is easy:</p>
+            <ul>
+                <li>✅ Both are <strong>statically typed</strong> with explicit type declarations</li>
+                <li>✅ Both use <strong>classes and objects</strong> with similar syntax</li>
+                <li>✅ Both have <strong>inheritance and interfaces</strong></li>
+                <li>✅ Both require <strong>semicolons and braces</strong></li>
+                <li>✅ Both have <strong>similar collections</strong> (ArrayList → List, HashMap → Dictionary)</li>
+                <li>✅ Main difference: C# has <strong>properties</strong> instead of explicit getters/setters</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <h3>🎯 For Your Interview</h3>
+            <p>Understanding Java helps you with:</p>
+            <ul>
+                <li>✅ <strong>Strong OOP foundation</strong> - classes, inheritance, polymorphism</li>
+                <li>✅ <strong>Type system understanding</strong> - static typing, generics</li>
+                <li>✅ <strong>Design patterns</strong> - Java taught you clean architecture</li>
+                <li>✅ <strong>Interface contracts</strong> - defining and implementing behaviors</li>
+                <li>✅ Easy transition to C# - the syntax and concepts are nearly identical</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

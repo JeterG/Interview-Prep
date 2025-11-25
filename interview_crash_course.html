@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Crash Course - GUI Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.6;
+            color: #e8e6e3;
+            background: #1e1e1e;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #252526;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: #4ec9b0;
+            border-bottom: 3px solid #569cd6;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        h2 {
+            color: #569cd6;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-left: 4px solid #4ec9b0;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #dcdcaa;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .question {
+            background: #2d2d30;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 3px solid #ce9178;
+        }
+
+        .q-text {
+            color: #ce9178;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .answer {
+            color: #d4d4d4;
+            padding-left: 15px;
+        }
+
+        pre {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            border: 1px solid #3e3e42;
+        }
+
+        code {
+            color: #9cdcfe;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95em;
+        }
+
+        .note {
+            background: #264f78;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #569cd6;
+        }
+
+        .highlight {
+            color: #4ec9b0;
+            font-weight: bold;
+        }
+
+        .toggle-btn {
+            background: #0e639c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .toggle-btn:hover {
+            background: #1177bb;
+        }
+
+        .code-section {
+            margin: 10px 0;
+        }
+
+        ul {
+            margin-left: 20px;
+            color: #d4d4d4;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 GUI Software Engineer Interview Crash Course</h1>
+        <div class="note">
+            <strong>Study Strategy:</strong> Read each answer once, then try to code solutions from memory. Focus on understanding patterns, not memorization.
+        </div>
+
+        <h2>1. C# & Language Fundamentals</h2>
+
+        <div class="question">
+            <div class="q-text">Q: Explain the difference between value types and reference types</div>
+            <div class="answer">Value types store data directly in memory (int, bool, struct) while reference types store a reference to the memory location (classes, strings, arrays).</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: What's the difference between an interface and an abstract class?</div>
+            <div class="answer">An interface defines a contract with no implementation (only method signatures), while an abstract class can have both implemented and abstract methods and can maintain state.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: How does garbage collection work in managed languages?</div>
+            <div class="answer">Garbage collection automatically reclaims memory by tracking object references and freeing objects that are no longer reachable from the program's root references.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: Explain async/await patterns</div>
+            <div class="answer">Async/await allows non-blocking asynchronous operations where async marks a function as asynchronous and await pauses execution until the awaited task completes without blocking the thread.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: Key differences between Python and C#?</div>
+            <div class="answer">C# is statically typed (type checking at compile-time), compiled to intermediate language, has explicit memory management through garbage collection, and requires semicolons, while Python is dynamically typed, interpreted, and uses indentation for structure.</div>
+        </div>
+
+        <h2>2. GUI/Desktop Application Concepts</h2>
+
+        <div class="question">
+            <div class="q-text">Q: How would you structure a desktop application that communicates with a backend API?</div>
+            <div class="answer">Use a layered architecture with separate layers for UI (presentation), business logic (services), and data access (API client), following the separation of concerns principle.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: Explain the MVC pattern</div>
+            <div class="answer">MVC separates application into Model (data/business logic), View (UI presentation), and Controller (handles user input and updates model/view).</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: How do you handle state management in a GUI application?</div>
+            <div class="answer">Use a centralized state store or state management pattern (like Redux/Flux) where state changes flow unidirectionally and components subscribe to state updates.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: How do you prevent a GUI from freezing during long operations?</div>
+            <div class="answer">Run long operations on background threads or use async/await to keep the UI thread responsive, updating the UI with progress indicators.</div>
+        </div>
+
+        <h2>3. Data Structures & Algorithms - Code Problems</h2>
+
+        <h3>Arrays & Strings</h3>
+
+        <div class="code-section">
+            <div class="q-text">Reverse a string in-place</div>
+            <pre><code>def reverse_string(s):
+    # Convert to list (strings are immutable in Python)
+    s = list(s)
+    left, right = 0, len(s) - 1
+    while left < right:
+        s[left], s[right] = s[right], s[left]
+        left += 1
+        right -= 1
+    return ''.join(s)
+
+# Time: O(n), Space: O(n)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">First non-repeating character</div>
+            <pre><code>def first_unique_char(s):
+    char_count = {}
+    for char in s:
+        char_count[char] = char_count.get(char, 0) + 1
+    
+    for i, char in enumerate(s):
+        if char_count[char] == 1:
+            return i
+    return -1
+
+# Time: O(n), Space: O(1) - max 26 letters</code></pre>
+        </div>
+
+        <h3>Hash Tables</h3>
+
+        <div class="code-section">
+            <div class="q-text">Two Sum - Return indices that add to target</div>
+            <pre><code>def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+
+# Time: O(n), Space: O(n)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">Group Anagrams</div>
+            <pre><code>def group_anagrams(strs):
+    from collections import defaultdict
+    anagrams = defaultdict(list)
+    
+    for s in strs:
+        # Sort string as key
+        key = ''.join(sorted(s))
+        anagrams[key].append(s)
+    
+    return list(anagrams.values())
+
+# Time: O(n * k log k), Space: O(n*k)
+# n = number of strings, k = max length of string</code></pre>
+        </div>
+
+        <h3>Linked Lists</h3>
+
+        <div class="code-section">
+            <div class="q-text">Detect cycle in linked list</div>
+            <pre><code>def has_cycle(head):
+    if not head:
+        return False
+    
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+
+# Floyd's Cycle Detection (Tortoise & Hare)
+# Time: O(n), Space: O(1)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">Reverse a linked list</div>
+            <pre><code>def reverse_list(head):
+    prev = None
+    current = head
+    
+    while current:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+    
+    return prev
+
+# Time: O(n), Space: O(1)</code></pre>
+        </div>
+
+        <h3>Trees</h3>
+
+        <div class="code-section">
+            <div class="q-text">Binary tree level order traversal (BFS)</div>
+            <pre><code>def level_order(root):
+    if not root:
+        return []
+    
+    from collections import deque
+    result = []
+    queue = deque([root])
+    
+    while queue:
+        level_size = len(queue)
+        level = []
+        
+        for _ in range(level_size):
+            node = queue.popleft()
+            level.append(node.val)
+            
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        
+        result.append(level)
+    
+    return result
+
+# Time: O(n), Space: O(n)</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">Validate Binary Search Tree</div>
+            <pre><code>def is_valid_bst(root):
+    def validate(node, min_val, max_val):
+        if not node:
+            return True
+        
+        if node.val <= min_val or node.val >= max_val:
+            return False
+        
+        return (validate(node.left, min_val, node.val) and
+                validate(node.right, node.val, max_val))
+    
+    return validate(root, float('-inf'), float('inf'))
+
+# Time: O(n), Space: O(h) where h is height</code></pre>
+        </div>
+
+        <h2>4. Practical Coding Challenges</h2>
+
+        <div class="code-section">
+            <div class="q-text">Real-time Sensor Data Monitor</div>
+            <pre><code>from collections import deque
+from datetime import datetime, timedelta
+
+class SensorMonitor:
+    def __init__(self, threshold):
+        self.threshold = threshold
+        self.readings = deque()  # (value, timestamp)
+    
+    def add_reading(self, value, timestamp):
+        self.readings.append((value, timestamp))
+    
+    def get_average(self, time_window):
+        """Get average over last time_window seconds"""
+        cutoff = datetime.now() - timedelta(seconds=time_window)
+        recent = [val for val, ts in self.readings if ts >= cutoff]
+        return sum(recent) / len(recent) if recent else 0
+    
+    def check_alert(self):
+        """Check if last reading exceeds threshold"""
+        if self.readings and self.readings[-1][0] > self.threshold:
+            return True
+        return False</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">Parse error logs from file</div>
+            <pre><code>import re
+from datetime import datetime
+
+def parse_error_logs(filepath):
+    """Extract errors with timestamps from log file"""
+    errors = []
+    pattern = r'\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] ERROR: (.+)'
+    
+    with open(filepath, 'r') as f:
+        for line in f:
+            match = re.match(pattern, line)
+            if match:
+                timestamp = datetime.strptime(match.group(1), 
+                                             '%Y-%m-%d %H:%M:%S')
+                message = match.group(2).strip()
+                errors.append({'timestamp': timestamp, 'message': message})
+    
+    return errors</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">Validate medical device configuration</div>
+            <pre><code>def validate_config(config_dict):
+    """Validate device configuration meets requirements"""
+    required = ['device_id', 'voltage', 'frequency', 'enabled']
+    
+    # Check all required fields present
+    if not all(key in config_dict for key in required):
+        return False, "Missing required fields"
+    
+    # Validate device_id: alphanumeric, 8 chars
+    device_id = config_dict['device_id']
+    if not (len(device_id) == 8 and device_id.isalnum()):
+        return False, "Invalid device_id"
+    
+    # Validate voltage: float, 0-10V
+    try:
+        voltage = float(config_dict['voltage'])
+        if not (0 <= voltage <= 10):
+            return False, "Voltage out of range"
+    except (ValueError, TypeError):
+        return False, "Invalid voltage"
+    
+    # Validate frequency: int, 1-100Hz
+    try:
+        freq = int(config_dict['frequency'])
+        if not (1 <= freq <= 100):
+            return False, "Frequency out of range"
+    except (ValueError, TypeError):
+        return False, "Invalid frequency"
+    
+    # Validate enabled: boolean
+    if not isinstance(config_dict['enabled'], bool):
+        return False, "Invalid enabled field"
+    
+    return True, "Valid configuration"</code></pre>
+        </div>
+
+        <h2>5. SQL & Database Questions</h2>
+
+        <div class="code-section">
+            <div class="q-text">Find patients with sessions longer than 30 minutes today</div>
+            <pre><code>SELECT patient_id, COUNT(*) as long_sessions
+FROM sessions
+WHERE DATE(start_time) = CURRENT_DATE
+  AND TIMESTAMPDIFF(MINUTE, start_time, end_time) > 30
+GROUP BY patient_id
+HAVING COUNT(*) > 0;</code></pre>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">Find devices with most errors in last 24 hours</div>
+            <pre><code>SELECT device_id, COUNT(*) as error_count
+FROM error_logs
+WHERE timestamp >= NOW() - INTERVAL 24 HOUR
+GROUP BY device_id
+ORDER BY error_count DESC
+LIMIT 10;</code></pre>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: How would you optimize a slow query?</div>
+            <div class="answer">Add indexes on frequently queried columns, use EXPLAIN to analyze query execution, avoid SELECT *, limit result sets, and consider query restructuring or denormalization for complex joins.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: Explain indexing and when to use it</div>
+            <div class="answer">Indexes are data structures (usually B-trees) that speed up data retrieval by creating pointers to data locations; use them on columns frequently used in WHERE, JOIN, and ORDER BY clauses.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: SQL vs NoSQL - when to use each?</div>
+            <div class="answer">Use SQL for structured data with complex relationships and ACID transactions; use NoSQL for unstructured/semi-structured data, horizontal scaling needs, and flexible schemas.</div>
+        </div>
+
+        <h2>6. Concurrency & Threading</h2>
+
+        <div class="question">
+            <div class="q-text">Q: How do you prevent race conditions?</div>
+            <div class="answer">Use locks/mutexes to synchronize access to shared resources, ensure atomic operations, or use thread-safe data structures.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: Threading vs async/await?</div>
+            <div class="answer">Threading uses multiple OS threads for parallel execution (CPU-bound tasks), while async/await uses cooperative multitasking on a single thread for I/O-bound operations without blocking.</div>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">GUI with non-blocking API fetch</div>
+            <pre><code>import asyncio
+import aiohttp
+
+async def fetch_and_update_gui():
+    """Fetch data without freezing GUI"""
+    # Show loading indicator
+    update_gui_status("Loading...")
+    
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get('https://api.example.com/data') as response:
+                data = await response.json()
+        
+        # Update GUI with data
+        update_gui_display(data)
+        update_gui_status("Ready")
+    
+    except Exception as e:
+        update_gui_status(f"Error: {e}")
+
+# Call from GUI event handler:
+# asyncio.create_task(fetch_and_update_gui())</code></pre>
+        </div>
+
+        <h2>7. Error Handling & Testing</h2>
+
+        <div class="question">
+            <div class="q-text">Q: How do you write testable code?</div>
+            <div class="answer">Use dependency injection, separate concerns into single-responsibility functions, avoid global state, and design functions with clear inputs/outputs.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: Unit vs Integration vs E2E tests?</div>
+            <div class="answer">Unit tests verify individual functions in isolation, integration tests verify multiple components working together, and E2E tests verify entire user workflows through the system.</div>
+        </div>
+
+        <div class="code-section">
+            <div class="q-text">Code Review - Find bugs and improve this code</div>
+            <pre><code># BUGGY CODE:
+def process_device_data(data):
+    result = []
+    for item in data:
+        value = item['reading'] * 2  # What if 'reading' doesn't exist?
+        result.append(value)
+    return result
+
+# IMPROVED CODE:
+def process_device_data(data):
+    """Process device readings with error handling"""
+    if not data:
+        return []
+    
+    result = []
+    for item in data:
+        try:
+            # Validate reading exists and is numeric
+            reading = item.get('reading')
+            if reading is None:
+                print(f"Warning: Missing reading in {item}")
+                continue
+            
+            value = float(reading) * 2
+            result.append(value)
+        
+        except (ValueError, TypeError) as e:
+            print(f"Error processing item {item}: {e}")
+            continue
+    
+    return result</code></pre>
+        </div>
+
+        <h2>8. System Design Concepts</h2>
+
+        <div class="question">
+            <div class="q-text">Q: Design a medical device GUI showing real-time patient data</div>
+            <div class="answer">Use WebSocket connection for real-time updates, implement data validation layer, add connection retry logic with exponential backoff, cache last known good state, and display clear error states when connection fails.</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: Polling vs WebSockets for real-time data?</div>
+            <div class="answer">WebSockets provide true real-time bidirectional communication with lower latency and overhead, while polling repeatedly requests updates at intervals (simpler but less efficient).</div>
+        </div>
+
+        <div class="question">
+            <div class="q-text">Q: How do you ensure software reliability in critical systems?</div>
+            <div class="answer">Implement comprehensive error handling, extensive automated testing, redundancy and failover mechanisms, detailed logging/monitoring, and graceful degradation when components fail.</div>
+        </div>
+
+        <h2>9. Quick Reference - Time Complexities</h2>
+
+        <div class="note">
+            <strong>Common Operations:</strong>
+            <ul>
+                <li><span class="highlight">Array access:</span> O(1)</li>
+                <li><span class="highlight">Array search:</span> O(n)</li>
+                <li><span class="highlight">Binary search:</span> O(log n)</li>
+                <li><span class="highlight">Hash table insert/search:</span> O(1) average</li>
+                <li><span class="highlight">Tree insert/search (balanced):</span> O(log n)</li>
+                <li><span class="highlight">Sorting (efficient):</span> O(n log n)</li>
+                <li><span class="highlight">BFS/DFS:</span> O(V + E)</li>
+            </ul>
+        </div>
+
+        <h2>10. Key Takeaways for Your Interview</h2>
+
+        <div class="note">
+            <strong>Connect Your Experience:</strong>
+            <ul>
+                <li>Mention your <span class="highlight">Dataflow pipeline</span> when discussing async operations</li>
+                <li>Reference <span class="highlight">DataDog/Rollbar</span> for monitoring questions</li>
+                <li>Highlight <span class="highlight">pytest experience</span> for testing discussions</li>
+                <li>Use your <span class="highlight">Flask/FastAPI</span> work to show API understanding</li>
+                <li>Emphasize <span class="highlight">quick learning</span> (you've mastered multiple frameworks)</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <strong>Medical Device Context:</strong>
+            <ul>
+                <li>Emphasize <span class="highlight">reliability and safety</span></li>
+                <li>Show understanding of <span class="highlight">data validation importance</span></li>
+                <li>Discuss <span class="highlight">error handling and recovery</span></li>
+                <li>Mention <span class="highlight">logging and audit trails</span></li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <strong>Questions to Ask Them:</strong>
+            <ul>
+                <li>"What does the current GUI technology stack look like?"</li>
+                <li>"How do you handle regulatory compliance in the development process?"</li>
+                <li>"What's the onboarding process for learning C# and Electron?"</li>
+                <li>"How does the team balance maintaining existing apps vs building new features?"</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        // Add copy button functionality
+        document.querySelectorAll('pre').forEach(pre => {
+            const button = document.createElement('button');
+            button.className = 'toggle-btn';
+            button.textContent = 'Copy Code';
+            button.style.display = 'block';
+            button.style.marginBottom = '10px';
+            
+            button.addEventListener('click', () => {
+                const code = pre.textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = 'Copy Code';
+                    }, 2000);
+                });
+            });
+            
+            pre.parentNode.insertBefore(button, pre);
+        });
+    </script>
+</body>
+</html>

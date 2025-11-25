@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Study Guide Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .intro {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.3);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 10px;
+        }
+
+        .tip-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .tip-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: white;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="logo">📚 Study Hub</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="interview_crash_course.html">Interview Prep</a></li>
+            <li><a href="csharp_basics.html">C# Basics</a></li>
+            <li><a href="javascript_basics.html">JavaScript Basics</a></li>
+            <li><a href="java_basics.html">Java Basics</a></li>
+            <li><a href="Study_Guide.html">Study Guide 1</a></li>
+            <li><a href="Study_guide_2.html">Study Guide 2</a></li>
+            <li><a href="GUI_interview_crash_course.html">GUI Interview</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>🎯 Soterix Medical Interview Preparation Hub</h1>
+        <p class="intro">
+            Complete study guide for GUI Software Engineer position at Soterix Medical.<br>
+            Everything you need to ace your technical interview in one place.
+        </p>
+
+        <div class="section">
+            <h2>🚀 Quick Start Guides</h2>
+            <div class="cards">
+                <a href="interview_crash_course.html" class="card">
+                    <div class="card-icon">💻</div>
+                    <h2>Interview Crash Course</h2>
+                    <p>Concise answers to all technical questions with Python code examples. Perfect for quick review before your interview.</p>
+                    <span class="badge">Quick Review</span>
+                </a>
+
+                <a href="csharp_basics.html" class="card">
+                    <div class="card-icon">🔷</div>
+                    <h2>C# Basics</h2>
+                    <p>Essential C# syntax, data structures, and patterns. Learn the fundamentals needed for the role.</p>
+                    <span class="badge">Required Skill</span>
+                </a>
+
+                <a href="javascript_basics.html" class="card">
+                    <div class="card-icon">⚡</div>
+                    <h2>JavaScript Basics</h2>
+                    <p>JavaScript fundamentals for Electron GUI development. Master the basics of modern JS.</p>
+                    <span class="badge">GUI Development</span>
+                </a>
+
+                <a href="java_basics.html" class="card">
+                    <div class="card-icon">☕</div>
+                    <h2>Java Basics</h2>
+                    <p>Core Java concepts and syntax. Strengthen your OOP foundation.</p>
+                    <span class="badge">Foundation</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📖 Comprehensive Study Guides</h2>
+            <div class="cards">
+                <a href="Study_Guide.html" class="card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="card-icon">📝</div>
+                    <h2>Study Guide - Part 1</h2>
+                    <p>In-depth technical concepts, algorithms, and system design patterns.</p>
+                    <span class="badge">Deep Dive</span>
+                </a>
+
+                <a href="Study_guide_2.html" class="card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="card-icon">📚</div>
+                    <h2>Study Guide - Part 2</h2>
+                    <p>Advanced topics, coding challenges, and interview strategies.</p>
+                    <span class="badge">Advanced</span>
+                </a>
+
+                <a href="GUI_interview_crash_course.html" class="card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="card-icon">🖥️</div>
+                    <h2>GUI Interview Guide</h2>
+                    <p>Specialized preparation for GUI development questions and concepts.</p>
+                    <span class="badge">Specialized</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="tip-box">
+                <h3>💡 Study Strategy</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Day 1-2:</strong> Focus on C# Basics and JavaScript Basics (required for the role)</li>
+                    <li><strong>Day 3-4:</strong> Work through Interview Crash Course and practice coding problems</li>
+                    <li><strong>Day 5:</strong> Review Study Guides 1 & 2 for comprehensive coverage</li>
+                    <li><strong>Day 6:</strong> Deep dive into GUI Interview Guide and system design</li>
+                    <li><strong>Day 7:</strong> Review weak areas and practice mock interviews</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎓 Your Advantages</h2>
+            <div class="tip-box">
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>✅ <strong>4+ years backend experience</strong> - Strong foundation in software engineering</li>
+                    <li>✅ <strong>Python, FastAPI, Flask expertise</strong> - Similar patterns to C# development</li>
+                    <li>✅ <strong>GCP, AWS, Docker skills</strong> - DevOps and deployment experience</li>
+                    <li>✅ <strong>ETL pipelines and data processing</strong> - Understanding of complex systems</li>
+                    <li>✅ <strong>Testing with pytest</strong> - Quality-focused development approach</li>
+                    <li>✅ <strong>CI/CD and production monitoring</strong> - Professional software practices</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔑 Key Talking Points for Interview</h2>
+            <div class="tip-box">
+                <h3>Connect Your Experience to Their Needs:</h3>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Medical Device Reliability:</strong> "At Balance AI, I implemented production monitoring with DataDog and Rollbar to ensure system reliability for financial transactions - similar rigor needed for medical devices."</li>
+                    <li><strong>GUI Development:</strong> "While my recent work is backend-focused, I built the Real Estate Website with full-stack integration, thinking about user experience and frontend needs."</li>
+                    <li><strong>Quick Learning:</strong> "I've successfully learned and deployed multiple frameworks - FastAPI, Flask, Django - and can apply that same learning approach to C# and Electron."</li>
+                    <li><strong>Data Pipeline Experience:</strong> "My Dataflow pipeline work processing financial transactions would translate well to handling medical device data streams."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>❓ Questions to Ask Them</h2>
+            <div class="tip-box">
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li>"What does the current GUI technology stack look like, and what's the roadmap for the next-generation interface?"</li>
+                    <li>"How does the team handle regulatory compliance requirements in the development process?"</li>
+                    <li>"What's the onboarding process for learning your specific tech stack, especially C# and Electron?"</li>
+                    <li>"How do you balance maintaining existing GUI applications with developing new features?"</li>
+                    <li>"What testing and quality assurance practices are in place for medical device software?"</li>
+                    <li>"Can you describe a typical day or week for someone in this role?"</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Good luck with your interview! 🍀</strong></p>
+            <p style="margin-top: 10px; opacity: 0.8;">Remember: They're looking for problem-solving ability and learning potential, not just existing C# knowledge.</p>
+        </footer>
+    </div>
+</body>
+</html>
