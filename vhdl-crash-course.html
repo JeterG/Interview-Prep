@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VHDL Basic Crash Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box strong {
+            color: #667eea;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .number {
+            color: #b5cea8;
+        }
+
+        .type {
+            color: #4ec9b0;
+        }
+
+        ul,
+        ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .example-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .example-title {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        footer {
+            background: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="logo">📚 Study Hub</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="interview_crash_course.html">Interview Prep</a></li>
+            <li><a href="csharp_basics.html">C# Basics</a></li>
+            <li><a href="javascript_basics.html">JavaScript Basics</a></li>
+            <li><a href="java_basics.html">Java Basics</a></li>
+            <li><a href="Study_Guide.html">Study Guide 1</a></li>
+            <li><a href="Study_guide_2.html">Study Guide 2</a></li>
+            <li><a href="GUI_interview_crash_course.html">GUI Interview</a></li>
+            <li><a href="vhdl-crash-course.html">VHDL</a></li>
+
+        </ul>
+    </nav>
+    <div class="container">
+        <header>
+            <h1>🔌 VHDL Crash Course</h1>
+            <p>Learn VHSIC Hardware Description Language Basics</p>
+        </header>
+
+        <div class="content">
+            <h2>📚 What is VHDL?</h2>
+            <p>
+                <strong>VHDL</strong> (VHSIC Hardware Description Language) is a hardware description language used to
+                model
+                electronic systems. It was originally developed for the US Department of Defense to document the
+                behavior of
+                application-specific integrated circuits (ASICs). Today, it's widely used for designing and simulating
+                digital circuits.
+            </p>
+
+            <div class="info-box">
+                <strong>Key Points:</strong>
+                <ul>
+                    <li>VHDL describes hardware, not software</li>
+                    <li>Supports concurrent and sequential programming</li>
+                    <li>Strongly typed language</li>
+                    <li>Case insensitive (but convention uses uppercase for keywords)</li>
+                </ul>
+            </div>
+
+            <h2>🏗️ Basic Structure of VHDL</h2>
+            <p>A VHDL design consists of two main parts:</p>
+            <ol>
+                <li><strong>Entity</strong> - Defines the interface (inputs/outputs)</li>
+                <li><strong>Architecture</strong> - Describes the behavior or structure</li>
+            </ol>
+
+            <div class="example-section">
+                <div class="example-title">Example 1: Simple AND Gate</div>
+                <pre><code><span class="comment">-- Entity Declaration</span>
+<span class="keyword">LIBRARY</span> <span class="type">IEEE</span>;
+<span class="keyword">USE</span> <span class="type">IEEE.STD_LOGIC_1164.ALL</span>;
+
+<span class="keyword">ENTITY</span> and_gate <span class="keyword">IS</span>
+    <span class="keyword">PORT</span> (
+        a : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        b : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        y : <span class="keyword">OUT</span> <span class="type">STD_LOGIC</span>
+    );
+<span class="keyword">END</span> and_gate;
+
+<span class="comment">-- Architecture Body</span>
+<span class="keyword">ARCHITECTURE</span> behavioral <span class="keyword">OF</span> and_gate <span class="keyword">IS</span>
+<span class="keyword">BEGIN</span>
+    y <= a <span class="keyword">AND</span> b;
+<span class="keyword">END</span> behavioral;</code></pre>
+            </div>
+
+            <h2>📊 Data Types</h2>
+            <h3>Common Data Types:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>STD_LOGIC</code></td>
+                        <td>Single bit (9 states including 'U', '0', '1', 'Z')</td>
+                        <td>signal a : STD_LOGIC;</td>
+                    </tr>
+                    <tr>
+                        <td><code>STD_LOGIC_VECTOR</code></td>
+                        <td>Array of STD_LOGIC</td>
+                        <td>signal bus : STD_LOGIC_VECTOR(7 downto 0);</td>
+                    </tr>
+                    <tr>
+                        <td><code>INTEGER</code></td>
+                        <td>Integer numbers</td>
+                        <td>signal count : INTEGER range 0 to 255;</td>
+                    </tr>
+                    <tr>
+                        <td><code>BOOLEAN</code></td>
+                        <td>TRUE or FALSE</td>
+                        <td>signal flag : BOOLEAN;</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>⚡ Operators</h2>
+            <div class="info-box">
+                <strong>Logical Operators:</strong> AND, OR, NOT, NAND, NOR, XOR, XNOR<br>
+                <strong>Relational Operators:</strong> =, /=, <, <=,>, >=<br>
+                    <strong>Arithmetic Operators:</strong> +, -, *, /, mod, rem, **<br>
+                    <strong>Concatenation:</strong> &
+            </div>
+
+            <div class="example-section">
+                <div class="example-title">Example 2: 2-to-1 Multiplexer</div>
+                <pre><code><span class="keyword">LIBRARY</span> <span class="type">IEEE</span>;
+<span class="keyword">USE</span> <span class="type">IEEE.STD_LOGIC_1164.ALL</span>;
+
+<span class="keyword">ENTITY</span> mux2to1 <span class="keyword">IS</span>
+    <span class="keyword">PORT</span> (
+        a   : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        b   : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        sel : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        y   : <span class="keyword">OUT</span> <span class="type">STD_LOGIC</span>
+    );
+<span class="keyword">END</span> mux2to1;
+
+<span class="keyword">ARCHITECTURE</span> behavioral <span class="keyword">OF</span> mux2to1 <span class="keyword">IS</span>
+<span class="keyword">BEGIN</span>
+    <span class="keyword">PROCESS</span>(a, b, sel)
+    <span class="keyword">BEGIN</span>
+        <span class="keyword">IF</span> sel = <span class="string">'0'</span> <span class="keyword">THEN</span>
+            y <= a;
+        <span class="keyword">ELSE</span>
+            y <= b;
+        <span class="keyword">END IF</span>;
+    <span class="keyword">END PROCESS</span>;
+<span class="keyword">END</span> behavioral;</code></pre>
+            </div>
+
+            <h2>🔄 Sequential Statements (PROCESS)</h2>
+            <p>
+                A <code>PROCESS</code> is a sequential block that executes statements in order. It's sensitive to
+                signals
+                in its sensitivity list and executes when any of those signals change.
+            </p>
+
+            <div class="example-section">
+                <div class="example-title">Example 3: D Flip-Flop</div>
+                <pre><code><span class="keyword">LIBRARY</span> <span class="type">IEEE</span>;
+<span class="keyword">USE</span> <span class="type">IEEE.STD_LOGIC_1164.ALL</span>;
+
+<span class="keyword">ENTITY</span> d_flipflop <span class="keyword">IS</span>
+    <span class="keyword">PORT</span> (
+        clk : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        d   : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        q   : <span class="keyword">OUT</span> <span class="type">STD_LOGIC</span>
+    );
+<span class="keyword">END</span> d_flipflop;
+
+<span class="keyword">ARCHITECTURE</span> behavioral <span class="keyword">OF</span> d_flipflop <span class="keyword">IS</span>
+<span class="keyword">BEGIN</span>
+    <span class="keyword">PROCESS</span>(clk)
+    <span class="keyword">BEGIN</span>
+        <span class="keyword">IF</span> rising_edge(clk) <span class="keyword">THEN</span>
+            q <= d;
+        <span class="keyword">END IF</span>;
+    <span class="keyword">END PROCESS</span>;
+<span class="keyword">END</span> behavioral;</code></pre>
+            </div>
+
+            <h2>🔢 Counter Example</h2>
+            <div class="example-section">
+                <div class="example-title">Example 4: 4-bit Up Counter</div>
+                <pre><code><span class="keyword">LIBRARY</span> <span class="type">IEEE</span>;
+<span class="keyword">USE</span> <span class="type">IEEE.STD_LOGIC_1164.ALL</span>;
+<span class="keyword">USE</span> <span class="type">IEEE.NUMERIC_STD.ALL</span>;
+
+<span class="keyword">ENTITY</span> counter <span class="keyword">IS</span>
+    <span class="keyword">PORT</span> (
+        clk   : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        reset : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        count : <span class="keyword">OUT</span> <span class="type">STD_LOGIC_VECTOR</span>(<span class="number">3</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>)
+    );
+<span class="keyword">END</span> counter;
+
+<span class="keyword">ARCHITECTURE</span> behavioral <span class="keyword">OF</span> counter <span class="keyword">IS</span>
+    <span class="keyword">SIGNAL</span> count_int : <span class="type">UNSIGNED</span>(<span class="number">3</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>) := <span class="string">"0000"</span>;
+<span class="keyword">BEGIN</span>
+    <span class="keyword">PROCESS</span>(clk, reset)
+    <span class="keyword">BEGIN</span>
+        <span class="keyword">IF</span> reset = <span class="string">'1'</span> <span class="keyword">THEN</span>
+            count_int <= <span class="string">"0000"</span>;
+        <span class="keyword">ELSIF</span> rising_edge(clk) <span class="keyword">THEN</span>
+            count_int <= count_int + <span class="number">1</span>;
+        <span class="keyword">END IF</span>;
+    <span class="keyword">END PROCESS</span>;
+    
+    count <= <span class="type">STD_LOGIC_VECTOR</span>(count_int);
+<span class="keyword">END</span> behavioral;</code></pre>
+            </div>
+
+            <h2>📝 Concurrent Statements</h2>
+            <p>Concurrent statements execute simultaneously, modeling the parallel nature of hardware.</p>
+
+            <div class="example-section">
+                <div class="example-title">Example 5: Full Adder (Concurrent)</div>
+                <pre><code><span class="keyword">LIBRARY</span> <span class="type">IEEE</span>;
+<span class="keyword">USE</span> <span class="type">IEEE.STD_LOGIC_1164.ALL</span>;
+
+<span class="keyword">ENTITY</span> full_adder <span class="keyword">IS</span>
+    <span class="keyword">PORT</span> (
+        a    : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        b    : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        cin  : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        sum  : <span class="keyword">OUT</span> <span class="type">STD_LOGIC</span>;
+        cout : <span class="keyword">OUT</span> <span class="type">STD_LOGIC</span>
+    );
+<span class="keyword">END</span> full_adder;
+
+<span class="keyword">ARCHITECTURE</span> dataflow <span class="keyword">OF</span> full_adder <span class="keyword">IS</span>
+<span class="keyword">BEGIN</span>
+    sum  <= a <span class="keyword">XOR</span> b <span class="keyword">XOR</span> cin;
+    cout <= (a <span class="keyword">AND</span> b) <span class="keyword">OR</span> (b <span class="keyword">AND</span> cin) <span class="keyword">OR</span> (a <span class="keyword">AND</span> cin);
+<span class="keyword">END</span> dataflow;</code></pre>
+            </div>
+
+            <h2>🎯 CASE Statement</h2>
+            <div class="example-section">
+                <div class="example-title">Example 6: 7-Segment Decoder</div>
+                <pre><code><span class="keyword">LIBRARY</span> <span class="type">IEEE</span>;
+<span class="keyword">USE</span> <span class="type">IEEE.STD_LOGIC_1164.ALL</span>;
+
+<span class="keyword">ENTITY</span> seven_segment <span class="keyword">IS</span>
+    <span class="keyword">PORT</span> (
+        digit : <span class="keyword">IN</span>  <span class="type">STD_LOGIC_VECTOR</span>(<span class="number">3</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>);
+        seg   : <span class="keyword">OUT</span> <span class="type">STD_LOGIC_VECTOR</span>(<span class="number">6</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>)
+    );
+<span class="keyword">END</span> seven_segment;
+
+<span class="keyword">ARCHITECTURE</span> behavioral <span class="keyword">OF</span> seven_segment <span class="keyword">IS</span>
+<span class="keyword">BEGIN</span>
+    <span class="keyword">PROCESS</span>(digit)
+    <span class="keyword">BEGIN</span>
+        <span class="keyword">CASE</span> digit <span class="keyword">IS</span>
+            <span class="keyword">WHEN</span> <span class="string">"0000"</span> => seg <= <span class="string">"1111110"</span>; <span class="comment">-- 0</span>
+            <span class="keyword">WHEN</span> <span class="string">"0001"</span> => seg <= <span class="string">"0110000"</span>; <span class="comment">-- 1</span>
+            <span class="keyword">WHEN</span> <span class="string">"0010"</span> => seg <= <span class="string">"1101101"</span>; <span class="comment">-- 2</span>
+            <span class="keyword">WHEN</span> <span class="string">"0011"</span> => seg <= <span class="string">"1111001"</span>; <span class="comment">-- 3</span>
+            <span class="keyword">WHEN</span> <span class="string">"0100"</span> => seg <= <span class="string">"0110011"</span>; <span class="comment">-- 4</span>
+            <span class="keyword">WHEN</span> <span class="string">"0101"</span> => seg <= <span class="string">"1011011"</span>; <span class="comment">-- 5</span>
+            <span class="keyword">WHEN</span> <span class="string">"0110"</span> => seg <= <span class="string">"1011111"</span>; <span class="comment">-- 6</span>
+            <span class="keyword">WHEN</span> <span class="string">"0111"</span> => seg <= <span class="string">"1110000"</span>; <span class="comment">-- 7</span>
+            <span class="keyword">WHEN</span> <span class="string">"1000"</span> => seg <= <span class="string">"1111111"</span>; <span class="comment">-- 8</span>
+            <span class="keyword">WHEN</span> <span class="string">"1001"</span> => seg <= <span class="string">"1111011"</span>; <span class="comment">-- 9</span>
+            <span class="keyword">WHEN OTHERS</span> => seg <= <span class="string">"0000000"</span>; <span class="comment">-- blank</span>
+        <span class="keyword">END CASE</span>;
+    <span class="keyword">END PROCESS</span>;
+<span class="keyword">END</span> behavioral;</code></pre>
+            </div>
+
+            <h2>🔁 State Machine Example</h2>
+            <div class="example-section">
+                <div class="example-title">Example 7: Simple Traffic Light Controller</div>
+                <pre><code><span class="keyword">LIBRARY</span> <span class="type">IEEE</span>;
+<span class="keyword">USE</span> <span class="type">IEEE.STD_LOGIC_1164.ALL</span>;
+
+<span class="keyword">ENTITY</span> traffic_light <span class="keyword">IS</span>
+    <span class="keyword">PORT</span> (
+        clk   : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        reset : <span class="keyword">IN</span>  <span class="type">STD_LOGIC</span>;
+        light : <span class="keyword">OUT</span> <span class="type">STD_LOGIC_VECTOR</span>(<span class="number">2</span> <span class="keyword">DOWNTO</span> <span class="number">0</span>) <span class="comment">-- Red, Yellow, Green</span>
+    );
+<span class="keyword">END</span> traffic_light;
+
+<span class="keyword">ARCHITECTURE</span> behavioral <span class="keyword">OF</span> traffic_light <span class="keyword">IS</span>
+    <span class="keyword">TYPE</span> state_type <span class="keyword">IS</span> (RED, YELLOW, GREEN);
+    <span class="keyword">SIGNAL</span> state : state_type := RED;
+<span class="keyword">BEGIN</span>
+    <span class="keyword">PROCESS</span>(clk, reset)
+    <span class="keyword">BEGIN</span>
+        <span class="keyword">IF</span> reset = <span class="string">'1'</span> <span class="keyword">THEN</span>
+            state <= RED;
+        <span class="keyword">ELSIF</span> rising_edge(clk) <span class="keyword">THEN</span>
+            <span class="keyword">CASE</span> state <span class="keyword">IS</span>
+                <span class="keyword">WHEN</span> RED =>
+                    state <= GREEN;
+                <span class="keyword">WHEN</span> GREEN =>
+                    state <= YELLOW;
+                <span class="keyword">WHEN</span> YELLOW =>
+                    state <= RED;
+            <span class="keyword">END CASE</span>;
+        <span class="keyword">END IF</span>;
+    <span class="keyword">END PROCESS</span>;
+    
+    <span class="comment">-- Output logic</span>
+    <span class="keyword">WITH</span> state <span class="keyword">SELECT</span>
+        light <= <span class="string">"100"</span> <span class="keyword">WHEN</span> RED,
+                 <span class="string">"010"</span> <span class="keyword">WHEN</span> YELLOW,
+                 <span class="string">"001"</span> <span class="keyword">WHEN</span> GREEN;
+<span class="keyword">END</span> behavioral;</code></pre>
+            </div>
+
+            <h2>💡 Best Practices</h2>
+            <div class="info-box">
+                <ul>
+                    <li>Always include sensitivity lists in PROCESS statements</li>
+                    <li>Use <code>rising_edge(clk)</code> instead of <code>clk'event and clk='1'</code></li>
+                    <li>Initialize signals and variables when declaring them</li>
+                    <li>Use meaningful signal and entity names</li>
+                    <li>Comment your code thoroughly</li>
+                    <li>Keep processes simple and focused</li>
+                    <li>Use STD_LOGIC instead of BIT for better simulation</li>
+                    <li>Always include a reset mechanism in sequential circuits</li>
+                </ul>
+            </div>
+
+            <h2>🎓 Key Concepts Summary</h2>
+            <ul>
+                <li><strong>Entity:</strong> Defines the interface (black box view)</li>
+                <li><strong>Architecture:</strong> Describes internal behavior or structure</li>
+                <li><strong>Signal:</strong> Wire connection between components</li>
+                <li><strong>Process:</strong> Sequential execution block</li>
+                <li><strong>Concurrent Statements:</strong> Execute simultaneously</li>
+                <li><strong>Sensitivity List:</strong> Signals that trigger process execution</li>
+                <li><strong>Clock Edge:</strong> Timing reference for synchronous circuits</li>
+            </ul>
+
+            <h2>📖 Next Steps</h2>
+            <p>To continue learning VHDL:</p>
+            <ol>
+                <li>Practice writing simple combinational circuits (decoders, encoders, multiplexers)</li>
+                <li>Explore sequential circuits (shift registers, counters, state machines)</li>
+                <li>Learn about testbenches for simulation</li>
+                <li>Study component instantiation and structural modeling</li>
+                <li>Understand timing constraints and synthesis considerations</li>
+                <li>Work with FPGA development boards</li>
+            </ol>
+        </div>
+
+        <footer>
+            <p>🔌 VHDL Crash Course | Hardware Description Made Simple</p>
+            <p>Keep practicing and building digital designs! 🚀</p>
+        </footer>
+    </div>
+</body>
+
+</html>
