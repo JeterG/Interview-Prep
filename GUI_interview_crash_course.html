@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
             background: #252526;
             border-radius: 8px;
             padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
@@ -128,60 +129,87 @@
         }
     </style>
 </head>
+
 <body>
+    <nav>
+        <ul>
+            <li class="logo">📚 Study Hub</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="interview_crash_course.html">Interview Prep</a></li>
+            <li><a href="csharp_basics.html">C# Basics</a></li>
+            <li><a href="javascript_basics.html">JavaScript Basics</a></li>
+            <li><a href="java_basics.html">Java Basics</a></li>
+            <li><a href="Study_Guide.html">Study Guide 1</a></li>
+            <li><a href="Study_guide_2.html">Study Guide 2</a></li>
+            <li><a href="GUI_interview_crash_course.html">GUI Interview</a></li>
+        </ul>
+    </nav>
     <div class="container">
         <h1>🚀 GUI Software Engineer Interview Crash Course</h1>
         <div class="note">
-            <strong>Study Strategy:</strong> Read each answer once, then try to code solutions from memory. Focus on understanding patterns, not memorization.
+            <strong>Study Strategy:</strong> Read each answer once, then try to code solutions from memory. Focus on
+            understanding patterns, not memorization.
         </div>
 
         <h2>1. C# & Language Fundamentals</h2>
 
         <div class="question">
             <div class="q-text">Q: Explain the difference between value types and reference types</div>
-            <div class="answer">Value types store data directly in memory (int, bool, struct) while reference types store a reference to the memory location (classes, strings, arrays).</div>
+            <div class="answer">Value types store data directly in memory (int, bool, struct) while reference types
+                store a reference to the memory location (classes, strings, arrays).</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: What's the difference between an interface and an abstract class?</div>
-            <div class="answer">An interface defines a contract with no implementation (only method signatures), while an abstract class can have both implemented and abstract methods and can maintain state.</div>
+            <div class="answer">An interface defines a contract with no implementation (only method signatures), while
+                an abstract class can have both implemented and abstract methods and can maintain state.</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: How does garbage collection work in managed languages?</div>
-            <div class="answer">Garbage collection automatically reclaims memory by tracking object references and freeing objects that are no longer reachable from the program's root references.</div>
+            <div class="answer">Garbage collection automatically reclaims memory by tracking object references and
+                freeing objects that are no longer reachable from the program's root references.</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: Explain async/await patterns</div>
-            <div class="answer">Async/await allows non-blocking asynchronous operations where async marks a function as asynchronous and await pauses execution until the awaited task completes without blocking the thread.</div>
+            <div class="answer">Async/await allows non-blocking asynchronous operations where async marks a function as
+                asynchronous and await pauses execution until the awaited task completes without blocking the thread.
+            </div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: Key differences between Python and C#?</div>
-            <div class="answer">C# is statically typed (type checking at compile-time), compiled to intermediate language, has explicit memory management through garbage collection, and requires semicolons, while Python is dynamically typed, interpreted, and uses indentation for structure.</div>
+            <div class="answer">C# is statically typed (type checking at compile-time), compiled to intermediate
+                language, has explicit memory management through garbage collection, and requires semicolons, while
+                Python is dynamically typed, interpreted, and uses indentation for structure.</div>
         </div>
 
         <h2>2. GUI/Desktop Application Concepts</h2>
 
         <div class="question">
-            <div class="q-text">Q: How would you structure a desktop application that communicates with a backend API?</div>
-            <div class="answer">Use a layered architecture with separate layers for UI (presentation), business logic (services), and data access (API client), following the separation of concerns principle.</div>
+            <div class="q-text">Q: How would you structure a desktop application that communicates with a backend API?
+            </div>
+            <div class="answer">Use a layered architecture with separate layers for UI (presentation), business logic
+                (services), and data access (API client), following the separation of concerns principle.</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: Explain the MVC pattern</div>
-            <div class="answer">MVC separates application into Model (data/business logic), View (UI presentation), and Controller (handles user input and updates model/view).</div>
+            <div class="answer">MVC separates application into Model (data/business logic), View (UI presentation), and
+                Controller (handles user input and updates model/view).</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: How do you handle state management in a GUI application?</div>
-            <div class="answer">Use a centralized state store or state management pattern (like Redux/Flux) where state changes flow unidirectionally and components subscribe to state updates.</div>
+            <div class="answer">Use a centralized state store or state management pattern (like Redux/Flux) where state
+                changes flow unidirectionally and components subscribe to state updates.</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: How do you prevent a GUI from freezing during long operations?</div>
-            <div class="answer">Run long operations on background threads or use async/await to keep the UI thread responsive, updating the UI with progress indicators.</div>
+            <div class="answer">Run long operations on background threads or use async/await to keep the UI thread
+                responsive, updating the UI with progress indicators.</div>
         </div>
 
         <h2>3. Data Structures & Algorithms - Code Problems</h2>
@@ -450,29 +478,37 @@ LIMIT 10;</code></pre>
 
         <div class="question">
             <div class="q-text">Q: How would you optimize a slow query?</div>
-            <div class="answer">Add indexes on frequently queried columns, use EXPLAIN to analyze query execution, avoid SELECT *, limit result sets, and consider query restructuring or denormalization for complex joins.</div>
+            <div class="answer">Add indexes on frequently queried columns, use EXPLAIN to analyze query execution, avoid
+                SELECT *, limit result sets, and consider query restructuring or denormalization for complex joins.
+            </div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: Explain indexing and when to use it</div>
-            <div class="answer">Indexes are data structures (usually B-trees) that speed up data retrieval by creating pointers to data locations; use them on columns frequently used in WHERE, JOIN, and ORDER BY clauses.</div>
+            <div class="answer">Indexes are data structures (usually B-trees) that speed up data retrieval by creating
+                pointers to data locations; use them on columns frequently used in WHERE, JOIN, and ORDER BY clauses.
+            </div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: SQL vs NoSQL - when to use each?</div>
-            <div class="answer">Use SQL for structured data with complex relationships and ACID transactions; use NoSQL for unstructured/semi-structured data, horizontal scaling needs, and flexible schemas.</div>
+            <div class="answer">Use SQL for structured data with complex relationships and ACID transactions; use NoSQL
+                for unstructured/semi-structured data, horizontal scaling needs, and flexible schemas.</div>
         </div>
 
         <h2>6. Concurrency & Threading</h2>
 
         <div class="question">
             <div class="q-text">Q: How do you prevent race conditions?</div>
-            <div class="answer">Use locks/mutexes to synchronize access to shared resources, ensure atomic operations, or use thread-safe data structures.</div>
+            <div class="answer">Use locks/mutexes to synchronize access to shared resources, ensure atomic operations,
+                or use thread-safe data structures.</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: Threading vs async/await?</div>
-            <div class="answer">Threading uses multiple OS threads for parallel execution (CPU-bound tasks), while async/await uses cooperative multitasking on a single thread for I/O-bound operations without blocking.</div>
+            <div class="answer">Threading uses multiple OS threads for parallel execution (CPU-bound tasks), while
+                async/await uses cooperative multitasking on a single thread for I/O-bound operations without blocking.
+            </div>
         </div>
 
         <div class="code-section">
@@ -505,12 +541,14 @@ async def fetch_and_update_gui():
 
         <div class="question">
             <div class="q-text">Q: How do you write testable code?</div>
-            <div class="answer">Use dependency injection, separate concerns into single-responsibility functions, avoid global state, and design functions with clear inputs/outputs.</div>
+            <div class="answer">Use dependency injection, separate concerns into single-responsibility functions, avoid
+                global state, and design functions with clear inputs/outputs.</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: Unit vs Integration vs E2E tests?</div>
-            <div class="answer">Unit tests verify individual functions in isolation, integration tests verify multiple components working together, and E2E tests verify entire user workflows through the system.</div>
+            <div class="answer">Unit tests verify individual functions in isolation, integration tests verify multiple
+                components working together, and E2E tests verify entire user workflows through the system.</div>
         </div>
 
         <div class="code-section">
@@ -552,17 +590,21 @@ def process_device_data(data):
 
         <div class="question">
             <div class="q-text">Q: Design a medical device GUI showing real-time patient data</div>
-            <div class="answer">Use WebSocket connection for real-time updates, implement data validation layer, add connection retry logic with exponential backoff, cache last known good state, and display clear error states when connection fails.</div>
+            <div class="answer">Use WebSocket connection for real-time updates, implement data validation layer, add
+                connection retry logic with exponential backoff, cache last known good state, and display clear error
+                states when connection fails.</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: Polling vs WebSockets for real-time data?</div>
-            <div class="answer">WebSockets provide true real-time bidirectional communication with lower latency and overhead, while polling repeatedly requests updates at intervals (simpler but less efficient).</div>
+            <div class="answer">WebSockets provide true real-time bidirectional communication with lower latency and
+                overhead, while polling repeatedly requests updates at intervals (simpler but less efficient).</div>
         </div>
 
         <div class="question">
             <div class="q-text">Q: How do you ensure software reliability in critical systems?</div>
-            <div class="answer">Implement comprehensive error handling, extensive automated testing, redundancy and failover mechanisms, detailed logging/monitoring, and graceful degradation when components fail.</div>
+            <div class="answer">Implement comprehensive error handling, extensive automated testing, redundancy and
+                failover mechanisms, detailed logging/monitoring, and graceful degradation when components fail.</div>
         </div>
 
         <h2>9. Quick Reference - Time Complexities</h2>
@@ -623,7 +665,7 @@ def process_device_data(data):
             button.textContent = 'Copy Code';
             button.style.display = 'block';
             button.style.marginBottom = '10px';
-            
+
             button.addEventListener('click', () => {
                 const code = pre.textContent;
                 navigator.clipboard.writeText(code).then(() => {
@@ -633,9 +675,10 @@ def process_device_data(data):
                     }, 2000);
                 });
             });
-            
+
             pre.parentNode.insertBefore(button, pre);
         });
     </script>
 </body>
+
 </html>

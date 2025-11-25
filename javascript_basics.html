@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,7 @@
             padding: 15px 30px;
             border-radius: 8px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         nav a {
@@ -44,7 +45,7 @@
             background: #252526;
             border-radius: 8px;
             padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
@@ -133,7 +134,8 @@
             margin: 15px 0;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: left;
             border: 1px solid #3e3e42;
@@ -163,19 +165,29 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
-        <a href="index.html">🏠 Home</a>
-        <a href="interview_crash_course.html">Interview Prep</a>
-        <a href="csharp_basics.html">C# Basics</a>
-        <a href="java_basics.html">Java Basics</a>
+        <ul>
+            <li class="logo">📚 Study Hub</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="interview_crash_course.html">Interview Prep</a></li>
+            <li><a href="csharp_basics.html">C# Basics</a></li>
+            <li><a href="javascript_basics.html">JavaScript Basics</a></li>
+            <li><a href="java_basics.html">Java Basics</a></li>
+            <li><a href="Study_Guide.html">Study Guide 1</a></li>
+            <li><a href="Study_guide_2.html">Study Guide 2</a></li>
+            <li><a href="GUI_interview_crash_course.html">GUI Interview</a></li>
+        </ul>
     </nav>
 
     <div class="container">
         <h1>⚡ JavaScript Basics Crash Course</h1>
 
         <div class="note">
-            <strong>Why JavaScript for this role:</strong> Electron uses JavaScript/Node.js for GUI development. It's the foundation for modern cross-platform desktop apps. Coming from Python, you'll find JavaScript surprisingly similar in many ways.
+            <strong>Why JavaScript for this role:</strong> Electron uses JavaScript/Node.js for GUI development. It's
+            the foundation for modern cross-platform desktop apps. Coming from Python, you'll find JavaScript
+            surprisingly similar in many ways.
         </div>
 
         <h2>1. Basic Syntax & Variables</h2>
@@ -198,7 +210,8 @@ var oldStyle = "avoid this";
 x = 5;  // DON'T DO THIS!</code></pre>
 
         <div class="tip">
-            <strong>Python Comparison:</strong> JavaScript has let/const similar to Python's variable assignment, but with explicit scoping rules. Use <code>const</code> by default, <code>let</code> when you need to reassign.
+            <strong>Python Comparison:</strong> JavaScript has let/const similar to Python's variable assignment, but
+            with explicit scoping rules. Use <code>const</code> by default, <code>let</code> when you need to reassign.
         </div>
 
         <h2>2. Data Types</h2>
@@ -272,7 +285,8 @@ true || false   // true (OR)
 !true          // false (NOT)</code></pre>
 
         <div class="warning">
-            <strong>⚠️ Common Gotcha:</strong> Use <code>===</code> (strict equality) instead of <code>==</code> to avoid unexpected type coercion bugs!
+            <strong>⚠️ Common Gotcha:</strong> Use <code>===</code> (strict equality) instead of <code>==</code> to
+            avoid unexpected type coercion bugs!
         </div>
 
         <h2>4. Control Flow</h2>
@@ -865,7 +879,8 @@ import { math } from './math.js';</code></pre>
             <h3>🎯 For Your Interview</h3>
             <p>Key points to emphasize:</p>
             <ul>
-                <li>✅ JavaScript is <strong>similar to Python</strong> in many ways (dynamic typing, first-class functions)</li>
+                <li>✅ JavaScript is <strong>similar to Python</strong> in many ways (dynamic typing, first-class
+                    functions)</li>
                 <li>✅ You've worked with <strong>async operations</strong> in Python (similar concepts)</li>
                 <li>✅ Arrow functions are like <strong>Python lambdas</strong></li>
                 <li>✅ Array methods (map/filter/reduce) are like <strong>Python's functional tools</strong></li>
@@ -885,4 +900,5 @@ import { math } from './math.js';</code></pre>
         </div>
     </div>
 </body>
+
 </html>

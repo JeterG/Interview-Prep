@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,7 @@
             padding: 15px 30px;
             border-radius: 8px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         nav a {
@@ -44,7 +45,7 @@
             background: #252526;
             border-radius: 8px;
             padding: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
@@ -125,7 +126,8 @@
             margin: 15px 0;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: left;
             border: 1px solid #3e3e42;
@@ -155,19 +157,28 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
-        <a href="index.html">🏠 Home</a>
-        <a href="interview_crash_course.html">Interview Prep</a>
-        <a href="javascript_basics.html">JavaScript</a>
-        <a href="java_basics.html">Java</a>
+        <ul>
+            <li class="logo">📚 Study Hub</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="interview_crash_course.html">Interview Prep</a></li>
+            <li><a href="csharp_basics.html">C# Basics</a></li>
+            <li><a href="javascript_basics.html">JavaScript Basics</a></li>
+            <li><a href="java_basics.html">Java Basics</a></li>
+            <li><a href="Study_Guide.html">Study Guide 1</a></li>
+            <li><a href="Study_guide_2.html">Study Guide 2</a></li>
+            <li><a href="GUI_interview_crash_course.html">GUI Interview</a></li>
+        </ul>
     </nav>
 
     <div class="container">
         <h1>🔷 C# Basics Crash Course</h1>
 
         <div class="note">
-            <strong>Why C# for this role:</strong> C# is the primary language for Windows desktop GUI development with .NET framework. Coming from Python, you'll find many familiar OOP concepts with added type safety.
+            <strong>Why C# for this role:</strong> C# is the primary language for Windows desktop GUI development with
+            .NET framework. Coming from Python, you'll find many familiar OOP concepts with added type safety.
         </div>
 
         <h2>1. Basic Syntax & Structure</h2>
@@ -187,7 +198,8 @@ namespace MyApp
 }</code></pre>
 
         <div class="tip">
-            <strong>Python Comparison:</strong> Unlike Python's simple <code>print("Hello")</code>, C# requires a Main method inside a class. Think of it as more structured/verbose.
+            <strong>Python Comparison:</strong> Unlike Python's simple <code>print("Hello")</code>, C# requires a Main
+            method inside a class. Think of it as more structured/verbose.
         </div>
 
         <h2>2. Variables & Data Types</h2>
@@ -749,7 +761,8 @@ void ValidateAge(int age)
         <h2>10. LINQ (Language Integrated Query)</h2>
 
         <div class="note">
-            <strong>Think of LINQ as:</strong> Similar to Python's list comprehensions and filter/map/reduce, but more powerful and integrated into the language.
+            <strong>Think of LINQ as:</strong> Similar to Python's list comprehensions and filter/map/reduce, but more
+            powerful and integrated into the language.
         </div>
 
         <pre><code>using System.Linq;
@@ -955,4 +968,5 @@ using System;</code></pre>
         </div>
     </div>
 </body>
+
 </html>
