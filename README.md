@@ -1,6 +1,4 @@
-# Soterix Medical Interview Study Guide Website
 
-Complete study guide website for GUI Software Engineer position at Soterix Medical.
 
 ## 📚 Contents
 
